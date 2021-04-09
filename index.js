@@ -1,38 +1,29 @@
-//define data
-var tabledata = [
-    {id:1, name:"Oli Bob", progress:12, gender:"male", rating:1, col:"red" },
-    {id:2, name:"Mary May", progress:1, gender:"female", rating:2, col:"blue" },
-    {id:3, name:"Christine Lobowski", progress:42, gender:"female", rating:0, col:"green" },
-    {id:4, name:"Brendon Philips", progress:100, gender:"male", rating:1, col:"orange" },
-    {id:5, name:"Margret Marmajuke", progress:16, gender:"female", rating:5, col:"yellow"},
-];
-
-//Build Tabulator
 var table = new Tabulator("#example-table", {
     height:"311px",
-    layout:"fitColumns",
-    reactiveData:true, //turn on data reactivity
-    data:tabledata, //load data into table
+    movableRows:true,
     columns:[
-        {title:"Name", field:"name", sorter:"string", width:200},
-        {title:"Progress", field:"progress", sorter:"number", formatter:"progress"},
-        {title:"Gender", field:"gender", sorter:"string"},
-        {title:"Rating", field:"rating", formatter:"star", hozAlign:"center", width:100},
-        {title:"Favourite Color", field:"col", sorter:"string"},
+        {rowHandle:true, formatter:"handle", headerSort:false, frozen:true, width:30, minWidth:30},
+        {title:"Name", field:"name", width:150, editor:"input"},
+        {title:"Progress", field:"progress", formatter:"progress", sorter:"number", editor:"input"},
+        {title:"Gender", field:"gender"},
+        {title:"Rating", field:"rating", formatter:"star", formatterParams:{stars:6}, hozAlign:"center", width:120, editor:"input"},
+        {title:"Favourite Color", field:"col", editor:"input"},
+        {title:"Date Of Birth", field:"dob", hozAlign:"center", sorter:"date", editor:"input"},
+        {formatter:"buttonCross", width:40, align:"center", cellClick:function(e, cell){
+            cell.getRow().delete();
+        }},
     ],
+    rowMoved:function(row){
+        console.log("Row: " + row.getData().name + " has been moved");
+    }
 });
 
-//add row to bottom of table on button click
-document.getElementById("reactivity-add").addEventListener("click", function(){
-    tabledata.push({name:"IM A NEW ROW", progress:100, gender:"male"});
+//Add row on "Add Row" button click
+document.getElementById("add-row").addEventListener("click", function(){
+    table.addRow({});
 });
 
-//remove bottom row from table on button click
-document.getElementById("reactivity-delete").addEventListener("click", function(){
-    tabledata.pop();
-});
-
-//update name on first row in table on button click
-document.getElementById("reactivity-update").addEventListener("click", function(){
-    tabledata[0].name = "IVE BEEN UPDATED";
+//Clear table on "Empty the table" button click
+document.getElementById("clear").addEventListener("click", function(){
+    table.clearData()
 });
