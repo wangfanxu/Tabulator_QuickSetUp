@@ -30,6 +30,7 @@
 //Build Tabulator
 var table = new Tabulator("#example-table", {
     height:311,
+    movableRows:true,
     layout:"fitColumns",
     placeholder:"Awaiting Data, Please Load File",
     columns:[
@@ -42,7 +43,10 @@ var table = new Tabulator("#example-table", {
             {formatter:"buttonCross", width:40, align:"center", cellClick:function(e, cell){
             cell.getRow().delete();
         }},
-    ]
+    ],
+        rowMoved:function(row){
+        console.log("Row: " + row.getData().name + " has been moved");
+    }
 });
 
 //trigger AJAX load on "Load Data via AJAX" button click
