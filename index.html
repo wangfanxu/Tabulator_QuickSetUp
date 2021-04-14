@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/4.9.3/css/tabulator_modern.min.css" integrity="sha512-O78B/nDrXdQuhqNxsXnOtvtYgb30MJGbCvqC2OAxFgDwAQqf+XJIGACc7v/B1V9aiURCPB6PCWR18yX+HPdlOw==" crossorigin="anonymous" />
-    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.min.js"></script>    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script type="text/javascript" src="depence/tabulator.min.js"></script>  
+    <script type="text/javascript" src="depence/jquery-1.7.1.min.js"></script>
+    <link rel="stylesheet" href="depence/tabulator_modern.min.css" integrity="sha512-O78B/nDrXdQuhqNxsXnOtvtYgb30MJGbCvqC2OAxFgDwAQqf+XJIGACc7v/B1V9aiURCPB6PCWR18yX+HPdlOw==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="depence/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       
     <title>tabulator demo</title>
 </head>
 <body>
     <div>
         <button id="add-row">Add Blank Row to bottom</button>
-        <button id="clear">Empty the table</button>
     </div>
-    
+    <div>
+        <button id="file-load-trigger">Open File</button>
+    </div>    
     <div id="example-table"></div>
 </body>
 <script type="text/javascript" src="index.js"></script>
